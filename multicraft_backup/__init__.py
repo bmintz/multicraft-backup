@@ -2,6 +2,8 @@
 
 """multicraft-backup - Backs up your Minecraft servers from hosts that use Multicraft"""
 
+from .server import ServerBase
+
 __version__ = '0.0.1'
 __author__ = 'Benjamin Mintz <bmintz@protonmail.com>'
-__all__ = []
+__all__ = ['ServerBase']
