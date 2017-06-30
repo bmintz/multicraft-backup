@@ -6,10 +6,14 @@ server: utilities to start, and stop the server
 """
 
 import selenium
+import selenium.webdriver
+from selenium.webdriver.common.keys import Keys
 
 
 class ServerBase:
 	def __init__(self, config):
+		self._config = config
+		
 		self.browser = selenium.webdriver.Chrome()
 		
 		# actions should timeout after 3 seconds
@@ -20,15 +24,15 @@ class ServerBase:
 	
 	
 	def _login(self):
-		self.get(self.config['host']['login_page'])
+		self.get(self._config['host']['login_page'])
 		
 		# get the first two relevant input elements only
 		username_elem, password_elem = self.find_elements_by_css_selector(
 			'.row > input'
-		)[2:]
+		)[:2]
 		
-		username_elem.send_keys(self.config['login']['username'])
-		password_elem.send_keys(self.config['login']['password'])
+		username_elem.send_keys(self._config['login']['username'])
+		password_elem.send_keys(self._config['login']['password'])
 		password_elem.send_keys(Keys.ENTER)
 	
 	
