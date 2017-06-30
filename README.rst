@@ -5,10 +5,6 @@ multicraft-backup
 	:target: https://pypi.python.org/pypi/multicraft-backup
 	:alt: Latest PyPI version
 
-.. image:: None.png
-   :target: None
-   :alt: Latest Travis CI build status
-
 Backs up your Minecraft servers from hosts that use Multicraft
 
 Usage
