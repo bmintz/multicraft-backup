@@ -1,5 +1,9 @@
 import setuptools
 
+def get_long_description(filename):
+	with open(filename) as f:
+		return f.read()
+
 setuptools.setup(
 	name="multicraft-backup",
 	version="0.0.1",
@@ -9,17 +13,15 @@ setuptools.setup(
 	author_email="bmintz@protonmail.com",
 
 	description="Backs up your Minecraft servers from hosts that use Multicraft",
-	long_description=open('README.rst').read(),
+	long_description=get_long_description('README.rst'),
 
 	packages=setuptools.find_packages(),
 
-	install_requires=[],
+	install_requires=('selenium',),
 
 	classifiers=[
 		'Development Status :: 2 - Pre-Alpha',
 		'Programming Language :: Python',
-		'Programming Language :: Python :: 2',
-		'Programming Language :: Python :: 2.7',
 		'Programming Language :: Python :: 3',
 		'Programming Language :: Python :: 3.4',
 		'Programming Language :: Python :: 3.5',
