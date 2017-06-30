@@ -15,7 +15,6 @@ class ServerBase:
 	SERVERS_URL = '?r=server/index'
 	SERVER_URL = '?r=server/view&id={}'
 	
-	
 	def __init__(self, config):
 		self._config = config
 		
@@ -28,8 +27,20 @@ class ServerBase:
 		self._login()
 	
 	
+	def _stop(self):
+		"""stop the server"""
+	
+	
+	def _go_to_server_page(self):
+		"""go to the page that controls the server"""
+		
+		self.get(self._config['host']['base_url']\
+			+ SERVER_URL.format(self._config['server']['id_number'])
+		)
+	
+	
 	def _login(self):
-		self.get(self._config['host']['login_page'])
+		self.get(self._config['host']['base_url'] + LOGIN_URL)
 		
 		# get the first two relevant input elements only
 		username_elem, password_elem = self.find_elements_by_css_selector(

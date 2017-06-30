@@ -1,6 +1,9 @@
 - host:
-  login_page: 'https://mc.beastnode.com/index.php'
+  base_url: 'https://mc.beastnode.com/index.php'
 
 - login:
   username: ''
   password: ''
+
+- server:
+  id_number: 123456
