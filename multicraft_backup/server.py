@@ -17,6 +17,7 @@ class ServerBase:
 	
 	def __init__(self, config):
 		self._config = config
+		self.base_url = self._config['host']['base_url']
 		
 		self.browser = selenium.webdriver.Chrome()
 		
@@ -34,13 +35,15 @@ class ServerBase:
 	def _go_to_server_page(self):
 		"""go to the page that controls the server"""
 		
-		self.get(self._config['host']['base_url']\
-			+ SERVER_URL.format(self._config['server']['id_number'])
-		)
-	
+		server_manage_url = self.base_url \
+			+ self.SERVER_URL.format(self._config['server']['id_number'])
+		
+		if self.current_url != server_manage_url:
+			self.get(server_manage_url)
+		
 	
 	def _login(self):
-		self.get(self._config['host']['base_url'] + LOGIN_URL)
+		self.get(self.base_url + self.LOGIN_URL)
 		
 		# get the first two relevant input elements only
 		username_elem, password_elem = self.find_elements_by_css_selector(
