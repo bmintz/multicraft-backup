@@ -1,3 +1,6 @@
+# geany project files
+*.geany
+
 # virtualenv
 venv
 
