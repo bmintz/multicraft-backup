@@ -1,5 +1,5 @@
 - host:
-  login_url: 'https://mc.beastnode.com/index.php?r=site/login'
+  login_page: 'https://mc.beastnode.com/index.php'
 
 - login:
   username: ''

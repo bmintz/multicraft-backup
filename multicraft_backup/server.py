@@ -11,6 +11,11 @@ from selenium.webdriver.common.keys import Keys
 
 
 class ServerBase:
+	LOGIN_URL = '?r=site/login'
+	SERVERS_URL = '?r=server/index'
+	SERVER_URL = '?r=server/view&id={}'
+	
+	
 	def __init__(self, config):
 		self._config = config
 		
