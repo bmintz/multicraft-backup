@@ -1,6 +1,9 @@
 # geany project files
 *.geany
 
+# sensitive config files
+multicraft_backup.yml
+
 # virtualenv
 venv
 
