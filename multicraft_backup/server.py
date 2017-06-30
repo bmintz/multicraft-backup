@@ -19,6 +19,20 @@ class ServerBase:
 		self._login()
 	
 	
+	def _login(self):
+		self.get(self.config['host']['login_page'])
+		
+		# get the first two relevant input elements only
+		username_elem, password_elem = self.find_elements_by_css_selector(
+			'.row > input'
+		)[2:]
+		
+		username_elem.send_keys(self.config['login']['username'])
+		password_elem.send_keys(self.config['login']['password'])
+		password_elem.send_keys(Keys.ENTER)
+	
+	
+	
 	def __getattribute__(self, attribute):
 		"""make all self.browser attributes appear to be self attributes"""
 		
