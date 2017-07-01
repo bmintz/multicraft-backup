@@ -17,7 +17,7 @@ setuptools.setup(
 
 	packages=setuptools.find_packages(),
 
-	install_requires=('selenium', 'ftptool'),
+	install_requires=('selenium', 'ftputil',),
 
 	classifiers=(
 		'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
