@@ -28,13 +28,13 @@ class ServerBase:
 		self._login()
 	
 	
-	def _start(self):
+	def start(self):
 		"""start the server"""
 		
 		self._click_manage_button('Start')
 
 	
-	def _stop(self):
+	def stop(self):
 		"""stop the server"""
 
 		self._click_manage_button('Start')
