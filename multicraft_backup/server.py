@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 """
-server: utilities to start, and stop the server
+server: utilities to start and stop the server
 """
 
 import selenium
@@ -28,8 +28,24 @@ class ServerBase:
 		self._login()
 	
 	
+	def _start(self):
+		"""start the server"""
+		
+		self._click_manage_button('Start')
+
+	
 	def _stop(self):
 		"""stop the server"""
+
+		self._click_manage_button('Start')
+	
+	
+	def _click_manage_button(self, button_name):
+		self._go_to_server_page()
+		
+		selector = 'input[value="{}"]'.format(button_name)
+		
+		self.find_element_by_css_selector(selector).click()
 	
 	
 	def _go_to_server_page(self):
