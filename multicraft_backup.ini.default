@@ -1,11 +1,11 @@
 [host]
-base_url = 'https://mc.beastnode.com/index.php'
+base_url = https://mc.beastnode.com/index.php
 
 
 [login]
-username = ''
-password = ''
+username = cucum01
+password = ber02
 
 
 [server]
-id_number: 123456
+id_number = 123456
