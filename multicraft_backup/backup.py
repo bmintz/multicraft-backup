@@ -6,6 +6,7 @@ import hashlib
 import tarfile
 
 import os
+import datetime
 
 
 class BackerUpper:
@@ -19,7 +20,7 @@ class BackerUpper:
 	def do_it_all_everything(self):
 		self.backup()
 		self.checksum()
-		#~ self.tar_it_up()
+		self.tar_it_up()
 	
 	
 	def backup(self):
@@ -81,3 +82,18 @@ class BackerUpper:
 				hasher.hexdigest(),
 				filename,
 			)
+	
+	
+	def tar_it_up(self):
+		print('Tarring it up!')
+		
+		output_filename = datetime.datetime.now().isoformat() + '.tar.xz'
+		
+		with tarfile.open(output_filename) as tape_archive:
+			tape_archive.add(
+				self._desired_dir,
+				arcname=os.path.basename(self._desired_dir)
+			)
+			tape_archive.add('SHA256SUMS')
+		
+		print('Tarred and feathered 🤠')
