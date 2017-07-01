@@ -6,7 +6,7 @@ def get_long_description(filename):
 
 setuptools.setup(
 	name="multicraft-backup",
-	version="0.2.0",
+	version="0.3.0",
 	url="https://github.com/bmintz/multicraft-backup",
 
 	author="Benjamin Mintz",
