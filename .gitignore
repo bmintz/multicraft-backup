@@ -2,7 +2,7 @@
 *.geany
 
 # sensitive config files
-multicraft_backup.yml
+multicraft_backup.ini
 
 # virtualenv
 venv
