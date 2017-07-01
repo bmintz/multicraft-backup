@@ -6,7 +6,7 @@ def get_long_description(filename):
 
 setuptools.setup(
 	name="multicraft-backup",
-	version="0.0.1",
+	version="0.1.0",
 	url="https://github.com/bmintz/multicraft-backup",
 
 	author="Benjamin Mintz",
@@ -17,7 +17,7 @@ setuptools.setup(
 
 	packages=setuptools.find_packages(),
 
-	install_requires=('selenium',),
+	install_requires=('selenium', 'ftptool'),
 
 	classifiers=(
 		'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
