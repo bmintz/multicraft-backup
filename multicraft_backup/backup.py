@@ -49,6 +49,7 @@ class BackerUpper:
 				email=self._config['login']['username'],
 				id=self._config['server']['id_number']
 			),
+			'--password', self._config['login']['password'],
 			'ftp://{}/{}'.format(
 				self._config['ftp']['server_ip'],
 				self._desired_dir,
