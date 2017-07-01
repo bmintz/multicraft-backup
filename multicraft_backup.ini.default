@@ -9,3 +9,7 @@ password = ber02
 
 [server]
 id_number = 123456
+
+
+[ftp]
+server_ip = 
