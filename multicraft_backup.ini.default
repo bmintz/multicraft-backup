@@ -13,3 +13,4 @@ id_number = 123456
 
 [ftp]
 server_ip = 
+desired_dir = /

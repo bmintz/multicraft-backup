@@ -16,3 +16,11 @@ class BackerUpper:
 				id=config['server']['id_number'])
 			password=config['login']['password']
 		)
+	
+	
+	def backup(self):
+		"""back up the desired directory from the server.
+		make sure you stop the server first!
+		"""
+		
+		self._host.mirror_to_local(self._config['ftp']['desired_dir'], '.')
