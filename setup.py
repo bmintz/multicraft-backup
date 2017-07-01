@@ -19,7 +19,7 @@ setuptools.setup(
 
 	install_requires=('selenium', 'ftputil',),
 
-	classifiers=(
+	classifiers=[
 		'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
 
 		'Development Status :: 2 - Pre-Alpha',
@@ -27,5 +27,5 @@ setuptools.setup(
 		'Programming Language :: Python :: 3',
 		'Programming Language :: Python :: 3.4',
 		'Programming Language :: Python :: 3.5',
-	),
+	],
 )
