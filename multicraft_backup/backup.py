@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # encoding: utf-8
 
-from ftputil import FTPHost
+import subprocess
 import hashlib
 import tarfile
 
@@ -14,14 +14,6 @@ class BackerUpper:
 		self._desired_dir = config['ftp']['desired_dir']
 		
 		self.target_dir = target_dir
-		
-		self._ftp = FTPHost(config['ftp']['server_ip'],
-			'{email}.{id}'.format(
-				email=config['login']['username'],
-				id=config['server']['id_number']
-			),
-			config['login']['password']
-		)
 	
 	
 	def do_it_all_everything(self):
@@ -43,15 +35,24 @@ class BackerUpper:
 		
 		os.chdir(self.target_dir)
 		
-		
-		for dirname, _, filenames in self._ftp.walk(self._desired_dir):
-			self._mkdir_safe(dirname)
-			for filename in filenames:
-				filename = os.path.join(dirname, filename)
-				
-				print('Downloading', filename)
-				self._ftp.download_if_newer(filename, filename)
-	
+		# TODO explain these parameters
+		subprocess.run((
+			'wget',
+			'-P',
+			'.',
+			'--no-host-directories',
+			'-r',
+			'-N',
+			'-l', 'inf',
+			'--user', '{email}.{id}'.format(
+				email=self._config['login']['username'],
+				id=self._config['server']['id_number']
+			),
+			'ftp://{}/{}'.format(
+				self._config['ftp']['server_ip'],
+				self._desired_dir,
+			),
+		))
 	
 	
 	def _mkdir_safe(self, dirname):
@@ -69,13 +70,14 @@ class BackerUpper:
 			for dirname, _, filenames in os.walk(self._desired_dir):
 				for filename in filenames:
 					filename = os.path.join(dirname, filename)
+					print('Checksumming', filename)
 					sums.write(self._get_checksum_line(filename) + '\n')
 	
 	
 	def _get_checksum_line(self, filename, hash_algorithm='sha256'):
-		with open(filename) as f:
-			hasher = hashlib.new(hash_algorithm, f.read().encode('utf-8'))
+		with open(filename, 'rb') as f:
+			hasher = hashlib.new(hash_algorithm, f.read())
 			return '{} {}'.format(
+				hasher.hexdigest(),
 				filename,
-				hasher.hexdigest()
 			)
