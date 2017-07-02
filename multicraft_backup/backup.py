@@ -6,6 +6,7 @@ import hashlib
 import tarfile
 
 import os
+import shutil
 import datetime
 
 
@@ -21,6 +22,7 @@ class BackerUpper:
 		self.backup()
 		self.checksum()
 		self.tar_it_up()
+		self.delete_downloads()
 	
 	
 	def backup(self):
@@ -98,3 +100,8 @@ class BackerUpper:
 			tape_archive.add('SHA256SUMS')
 		
 		print('Tarred and feathered 🤠')
+	
+	
+	def delete_downloads(self):
+		shutil.rmtree(self._desired_dir)
+		os.remove('SHA256SUMS')
