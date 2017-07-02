@@ -11,11 +11,13 @@ def main(argv):
 		cp.read('multicraft_backup.ini')
 		
 		server = multicraft_backup.ServerBase(cp)
-		ftp = multicraft_backup.BackerUpper(cp, argv[1])
+		backup = multicraft_backup.BackerUpper(cp, argv[1])
 		
 		server.stop()
-		ftp.do_it_all_everything()
+		# we only need the server to be down for the initial backup
+		backup.backup()
 		server.start()
+		backup.post_download()
 		
 		# close the browser window
 		server.close()

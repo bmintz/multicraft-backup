@@ -18,8 +18,8 @@ class BackerUpper:
 		self.target_dir = target_dir
 	
 	
-	def do_it_all_everything(self):
-		self.backup()
+	def post_download(self):
+		"""do everything that needs to be done after downloading from the server"""
 		self.checksum()
 		self.tar_it_up()
 		self.delete_downloads()
